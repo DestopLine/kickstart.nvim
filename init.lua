@@ -301,6 +301,9 @@ vim.wo.number = true
 -- Use relative numbers
 vim.wo.relativenumber = true
 
+-- Enable line wrap
+vim.wo.wrap = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
