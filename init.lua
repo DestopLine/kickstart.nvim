@@ -72,6 +72,9 @@ require('lazy').setup({
   -- Discord Rich Presence
   'andweeb/presence.nvim',
 
+  -- Vim practice
+  'ThePrimeagen/vim-be-good',
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
