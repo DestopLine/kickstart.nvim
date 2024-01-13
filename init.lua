@@ -319,6 +319,10 @@ vim.o.termguicolors = true
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
+
+-- greatest remap ever
+vim.keymap.set('v', '<leader>p', '"_dP', { desc = '[P]ut keep reg' })
+
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
