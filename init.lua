@@ -75,6 +75,9 @@ require('lazy').setup({
   -- Vim practice
   'ThePrimeagen/vim-be-good',
 
+  -- Rainbow brackets
+  'hiphish/rainbow-delimiters.nvim',
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
