@@ -78,6 +78,9 @@ require('lazy').setup({
   -- Rainbow brackets
   'hiphish/rainbow-delimiters.nvim',
 
+  -- Automatic pair completion
+  'jiangmiao/auto-pairs',
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
