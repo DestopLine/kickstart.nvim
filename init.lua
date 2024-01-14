@@ -310,6 +310,9 @@ vim.wo.wrap = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
+-- Highlight the line where the cursor is
+vim.o.cursorline = true
+
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
