@@ -355,6 +355,10 @@ vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Put keep reg' })
 -- Remap Z to center line like zz; just for comfort
 vim.keymap.set({ 'n', 'v' }, 'Z', 'zz', { desc = 'Center this line' })
 
+-- Access file explorer
+vim.keymap.set('n', '<leader>f', vim.cmd.Ex, { desc = 'File explorer' })
+vim.keymap.set('n', '<leader>F', vim.cmd.Sex, { desc = 'File explorer split' })
+
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
