@@ -303,13 +303,13 @@ require('lazy').setup({
 vim.o.hlsearch = false
 
 -- Make line numbers default
-vim.wo.number = true
+vim.o.number = true
 
 -- Use relative numbers
-vim.wo.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable line wrap
-vim.wo.wrap = true
+vim.o.wrap = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
