@@ -363,7 +363,7 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 
 -- greatest remap ever
-vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Put keep reg' })
+vim.keymap.set('v', '<leader>P', '"_dP', { desc = 'Put keep reg' })
 
 -- Remap Z to center line like zz; just for comfort
 vim.keymap.set({ 'n', 'v' }, 'Z', 'zz', { desc = 'Center this line' })
