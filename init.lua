@@ -379,6 +379,9 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up half a page' })
 vim.keymap.set('n', 'n', 'nzz', { desc = 'Next search result' })
 vim.keymap.set('n', 'N', 'Nzz', { desc = 'Previous search result' })
 
+-- Visual block mode fix
+vim.keymap.set('i', '<C-c>', '<esc>')
+
 -- Remap Z to center line like zz; just for comfort
 vim.keymap.set({ 'n', 'v' }, 'Z', 'zz', { desc = 'Center this line' })
 
