@@ -327,6 +327,9 @@ vim.o.mouse = 'a'
 -- Highlight the line where the cursor is
 vim.o.cursorline = true
 
+-- Begin scrolling before reaching the edge of the window
+vim.o.scrolloff = 8
+
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
