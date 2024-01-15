@@ -359,6 +359,9 @@ vim.keymap.set({ 'n', 'v' }, 'Z', 'zz', { desc = 'Center this line' })
 vim.keymap.set('n', '<leader>f', vim.cmd.Ex, { desc = 'File explorer' })
 vim.keymap.set('n', '<leader>F', vim.cmd.Sex, { desc = 'File explorer split' })
 
+-- Access undotree
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Undotree' })
+
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
