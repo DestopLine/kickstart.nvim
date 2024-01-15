@@ -365,6 +365,10 @@ vim.o.termguicolors = true
 -- greatest remap ever
 vim.keymap.set('v', '<leader>P', '"_dP', { desc = 'Put keep reg' })
 
+-- Copy to and paste from clipboard
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Copy to clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { desc = 'Paste from clipboard' })
+
 -- Remap Z to center line like zz; just for comfort
 vim.keymap.set({ 'n', 'v' }, 'Z', 'zz', { desc = 'Center this line' })
 
