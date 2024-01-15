@@ -352,6 +352,9 @@ vim.o.termguicolors = true
 -- greatest remap ever
 vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Put keep reg' })
 
+-- Remap Z to center line like zz; just for comfort
+vim.keymap.set({ 'n', 'v' }, 'Z', 'zz', { desc = 'Center this line' })
+
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
