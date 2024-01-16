@@ -326,6 +326,12 @@ require('lazy').setup({
     },
   },
 
+  -- Project management
+  {
+    'nvim-telescope/telescope-project.nvim',
+    dependencies = 'nvim-telescope/telescope.nvim',
+  },
+
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -480,10 +486,27 @@ require('telescope').setup {
       },
     },
   },
+  extensions = {
+    project = {
+      on_project_selected = function(prompt_bufnr)
+        project_actions.change_working_directory(prompt_bufnr, false)
+        require('telescope.builtin').find_files()
+      end
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+
+-- Project management
+require('telescope').load_extension('project')
+vim.keymap.set(
+  'n',
+  '<leader>sp',
+  function() require'telescope'.extensions.project.project{ display_type = 'full' } end,
+  { desc = 'Search Projects' }
+)
 
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
