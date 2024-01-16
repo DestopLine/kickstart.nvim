@@ -326,6 +326,15 @@ require('lazy').setup({
     },
   },
 
+  -- Integrated terminal
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    opts = {
+      open_mapping = [[<c-\>]],
+    }
+  },
+
   -- Project management
   {
     'nvim-telescope/telescope-project.nvim',
