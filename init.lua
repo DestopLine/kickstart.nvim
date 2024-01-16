@@ -375,10 +375,10 @@ require('lazy').setup({
 vim.o.hlsearch = false
 
 -- Make line numbers default
-vim.o.number = true
+vim.wo.number = true
 
 -- Use relative numbers
-vim.o.relativenumber = true
+vim.wo.relativenumber = true
 
 -- Enable line wrap
 vim.o.wrap = true
