@@ -342,6 +342,16 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  -- Automatically activate python virtual envs
+  {
+    'linux-cultist/venv-selector.nvim',
+    dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+    opts = {
+      name = { 'venv', '.venv' },
+      parents = 0,
+      -- auto_refresh = false
+    },
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -477,6 +487,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+local function check_venv()
+  local venv = vim.fn.finddir('venv', vim.fn.getcwd())
+  local dotvenv = vim.fn.finddir('.venv', vim.fn.getcwd())
+  if venv ~= '' or dotvenv ~= '' then
+    require('venv-selector').retrieve_from_cache()
+  end
+end
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  desc = 'Auto select venv Nvim open',
+  callback = check_venv,
+  once = true,
+})
+
+local project_actions = require('telescope._extensions.project.actions')
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -490,6 +515,7 @@ require('telescope').setup {
     project = {
       on_project_selected = function(prompt_bufnr)
         project_actions.change_working_directory(prompt_bufnr, false)
+        check_venv()
         require('telescope.builtin').find_files()
       end
     }
