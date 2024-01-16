@@ -94,6 +94,45 @@ require('lazy').setup({
   -- Undo tree
   'mbbill/undotree',
 
+  -- Debuggers that may or may not work
+  'sakhnik/nvim-gdb',
+
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = 'mfussenegger/nvim-dap',
+    config = function()
+      local dap = require('dap')
+      local dapui = require('dapui')
+      dapui.setup()
+      dap.listeners.after.event_initialized['dapui_config'] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated['dapui_config'] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited['dapui_config'] = function()
+        dapui.close()
+      end
+    end
+  },
+
+  {
+    'mfussenegger/nvim-dap',
+  },
+
+  {
+    'mfussenegger/nvim-dap-python',
+    ft = 'python',
+    dependencies = {
+      'mfussenegger/nvim-dap',
+      'rcarriga/nvim-dap-ui',
+    },
+    config = function(_)
+      local path = vim.fn.stdpath('data') .. '/mason/packages/debugpy/venv/bin/python'
+      require('dap-python').setup(path)
+    end,
+  },
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -101,7 +140,14 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
+      {
+        'williamboman/mason.nvim',
+        opts = {
+          ensure_installed = {
+            'debugpy',
+          },
+        },
+      },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
@@ -405,6 +451,10 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+-- Debugger keymaps
+-- vim.keymap.set('n', '<leader>db', '<cmd> DapToggleBreakpoint <CR>', { desc = 'Toggle a breakpoint' })
+-- vim.keymap.set('n', '<leader>dr', require('dap-python').test_method, { desc = 'Toggle a breakpoint' })
+
 -- Git fugitive keymaps
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { desc = 'Git Status' })
 
@@ -657,7 +707,7 @@ local on_attach = function(_, bufnr)
   nmap('gr', require('telescope.builtin').lsp_references, 'Go to References')
   nmap('gI', require('telescope.builtin').lsp_implementations, 'Go to Implementation')
   nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'type Definition')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
+  nmap('<leader>cs', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
 
   -- See `:help K` for why this keymap
@@ -683,7 +733,7 @@ require('which-key').register {
   ['<leader>a'] = { name = 'Harpoon', _ = 'which_key_ignore' },
   ['<leader>ad'] = { name = 'Delete', _ = 'which_key_ignore' },
   ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = 'Document', _ = 'which_key_ignore' },
+  ['<leader>d'] = { name = 'Debugger', _ = 'which_key_ignore' },
   ['<leader>g'] = { name = 'Git', _ = 'which_key_ignore' },
   ['<leader>h'] = { name = 'Git Hunk', _ = 'which_key_ignore' },
   ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
