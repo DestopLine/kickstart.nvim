@@ -606,7 +606,7 @@ end
 vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = 'Search [/] in Open Files' })
 vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = 'Search Select telescope' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').git_files, { desc = 'Search Git files' })
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = 'Search Files' })
+vim.keymap.set('n', '<leader>sf', function() require('telescope.builtin').find_files({ no_ignore = true }) end, { desc = 'Search Files' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Search Help' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = 'Search current Word' })
 vim.keymap.set('n', '<leader>sl', require('telescope.builtin').live_grep, { desc = 'Search by Live grep' })
