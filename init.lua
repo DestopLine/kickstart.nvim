@@ -836,9 +836,10 @@ require('mason-lspconfig').setup()
 local servers = {
   -- gopls = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
+  tsserver = {},
+  angularls = {},
   clangd = {},
   pyright = {},
   lua_ls = {
