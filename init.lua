@@ -665,6 +665,7 @@ vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = {
+      'angular',
       'c',
       'cpp',
       'go',
@@ -675,6 +676,7 @@ vim.defer_fn(function()
       'html',
       'css',
       'javascript',
+      'toml',
       'typescript',
       'vimdoc',
       'vim',
