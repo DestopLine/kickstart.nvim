@@ -186,6 +186,18 @@ require('lazy').setup({
     },
   },
 
+  -- File system tree view
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
+  },
+
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
   {
@@ -457,8 +469,8 @@ vim.keymap.set('i', '<C-c>', '<esc>')
 vim.keymap.set({ 'n', 'v' }, 'Z', 'zz', { desc = 'Center this line' })
 
 -- Access file explorer
-vim.keymap.set('n', '<leader>f', vim.cmd.Ex, { desc = 'File explorer' })
-vim.keymap.set('n', '<leader>F', vim.cmd.Sex, { desc = 'File explorer split' })
+vim.keymap.set('n', '<leader>f', ':Neotree<CR>', { desc = 'File explorer on the right' })
+vim.keymap.set('n', '<leader>F', ':Neotree current<CR>', { desc = 'File explorer full screen' })
 
 -- Access undotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Undotree' })
@@ -531,7 +543,7 @@ require('telescope').setup {
       on_project_selected = function(prompt_bufnr)
         project_actions.change_working_directory(prompt_bufnr, false)
         check_venv()
-        require('telescope.builtin').find_files()
+        vim.api.nvim_command('Neotree current')
       end
     }
   }
