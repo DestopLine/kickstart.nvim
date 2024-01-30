@@ -544,6 +544,7 @@ require('telescope').setup {
         project_actions.change_working_directory(prompt_bufnr, false)
         check_venv()
         vim.api.nvim_command('Neotree current')
+        require('telescope.builtin').find_files()
       end
     }
   }
