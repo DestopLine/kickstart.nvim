@@ -680,6 +680,7 @@ vim.defer_fn(function()
       'angular',
       'c',
       'cpp',
+      'c_sharp',
       'go',
       'lua',
       'python',
@@ -850,6 +851,9 @@ local servers = {
   -- rust_analyzer = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
+  omnisharp = {
+    filetypes = { 'csx', 'cs' },
+  },
   tsserver = {},
   angularls = {},
   clangd = {},
