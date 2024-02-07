@@ -280,8 +280,19 @@ require('lazy').setup({
     'loctvl842/monokai-pro.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'monokai-pro-machine'
+      require('monokai-pro').setup{ transparent_background = true }
+      -- vim.cmd.colorscheme 'monokai-pro-machine'
     end,
+  },
+
+  {
+    "catppuccin/nvim",
+    priority = 1000,
+    name = "catppuccin",
+    config = function()
+      require('catppuccin').setup{ transparent_background = true }
+      vim.cmd.colorscheme 'catppuccin'
+    end
   },
 
   {
@@ -300,7 +311,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'monokai-pro',
+        theme = 'auto',
       },
     },
   },
