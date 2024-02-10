@@ -868,6 +868,7 @@ local servers = {
   },
   tsserver = {},
   angularls = {},
+  tailwindcss = {},
   clangd = {},
   pyright = {},
   lua_ls = {
